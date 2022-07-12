@@ -455,7 +455,7 @@ const sendMail = async(userInfo,event) =>{
         _id: event.userId,
     })
     const subject = "Invation à l'évènement de " + userEvent[0].firstname + " " + userEvent[0].lastname
-    const html = "<a href='http://localhost:3030/api/event/cookieInvitation/?eventId=" + event._id + "'>Accepter l'invitation</a>"
+    const html = "<a href='https://fathomless-forest-78481.herokuapp.com/api/event/cookieInvitation/?eventId=" + event._id + "'>Accepter l'invitation</a>"
     if(userInfo.email){
         var transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -488,7 +488,7 @@ const cookieInvitation = catchAsync(async(req, res, next) => {
     if(result === 401){
         return next(new AppError("Veuillez vous connectez avant d'accepter l'invitation", 401))
     }
-    res.redirect("http://localhost:3000/")
+    res.redirect("https://shary.netlify.app/")
 })
 
 const deleteEvent = catchAsync(async(req, res) => {

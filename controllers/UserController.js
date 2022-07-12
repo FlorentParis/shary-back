@@ -61,7 +61,7 @@ const sendMailActivation = async (data)=> {
         to: data.email, // list of receivers
         subject: "Activation de votre compte Shary !", // Subject line
         text: "data.contenu", // plaintext body
-        html: "Salut a toi <b>" + data.firstname + " " + data.lastname + "</b><br/>Pourrais tu nous confirmer qu'il s'agit bien de ton mail : " + data.email + "<br/>Si c'est bien le cas, cliques ici pour nous le confirmer et nous activerons ton compte: <a href='http://localhost:3030/api/user/emailVerification/?email=" + data.email + "'> CLIQUES ICI POTO !!!</a><br/> Merci et a bientot !<br/>Shary" // html body
+        html: "Salut a toi <b>" + data.firstname + " " + data.lastname + "</b><br/>Pourrais tu nous confirmer qu'il s'agit bien de ton mail : " + data.email + "<br/>Si c'est bien le cas, cliques ici pour nous le confirmer et nous activerons ton compte: <a href='https://fathomless-forest-78481.herokuapp.com/api/user/emailVerification/?email=" + data.email + "'> CLIQUES ICI POTO !!!</a><br/> Merci et a bientot !<br/>Shary" // html body
     }
     return await transporter.sendMail(message);
 }
@@ -116,7 +116,7 @@ const getCurrentUser = catchAsync(async(req, res, next)=> {
 const activateAccount = ((req, res) => {
     let data = req.query
     User.findOneAndUpdate({email: data.email},{$set: { status:"Active" }},{upsert: false}, function(err, doc) {
-        res.redirect("http://localhost:3000/")
+        res.redirect("https://shary.netlify.app/")
     });
 })
 
